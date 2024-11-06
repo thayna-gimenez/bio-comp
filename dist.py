@@ -7,23 +7,36 @@ m = len(s)
 n = len(t)
 
 # criando matriz de alinhamento
-linha_zero = [0] * len(s)
-a = [linha_zero] * len(t)
+a = []
 
-for j in range(1, n):
-    a[0][j] = a[0][j-1] + 1 # c(_, t[j])
+for i in range(m+1):
+    a.append([])
+    for j in range(n+1):
+        a[i].append(0)
 
-for i in range(1, m):
-    a[i][0] = a[i-1][0] + 2 # c(s[i], _)
+for j in range(1, n+1): a[0][j] = a[0][j-1] + 1 # c(_, t[j])
 
-    for j in range(1, n):
-        a[i][j] = a[i-1][j] + 2 # c(s[i], _)
+for i in range(1, m+1): a[i][0] = a[i-1][0] + 1 # c(s[i], _)
 
-        if (a[i][j] > a[i-1][j-1] + 3): # c(s[i], t[j])
-            a[i][j] = a[i-1][j-1] + 3
+print(a[0])
+
+for i in range(1, m+1):
+    for j in range(1, n+1):
+        x = a[i-1][j] + 1 # c(s[i], _)
+        y = a[i][j-1] + 1 # c(_, t[j])
+        z = a[i-1][j-1] + (s[i-1] != t[j-1]) # se for diferente é 1 (levenshtein)
+
+        a[i][j] = min(x, y, z)
+
+    print(a[i])
+
+
+""" for i in range(1, m+1):
+    for j in range(1, n+1):
+        a[i][j] = a[i-1][j] + 1 # c(s[i], _)
+
+        if (a[i][j] > a[i-1][j-1] + (s[i-1]) != t[j-1]): # c(s[i], t[j])
+            a[i][j] = a[i-1][j-1] + 1 
 
         if (a[i][j] > a[i][j-1] + 1): # c(_, t[j])
-            a[i][j] = a[i][j-1] + 1
-
-
-print(a)
+            a[i][j] = a[i][j-1] + 1 """
