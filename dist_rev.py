@@ -14,17 +14,19 @@ for i in range(m+1):
     for j in range(n+1):
         a[i].append(0)
 
-for j in range(n-1, 0, -1): a[m][j] = a[m][j+1] + 1 # c(_, t[j+1])
-print(a)
+for j in range(n-1, -1, -1): a[m][j] = a[m][j+1] + 1 # c(_, t[j+1])
 
-for i in range(m-1, 0, -1):
+for i in range(m-1, -1, -1): 
     a[i][n] = a[i+1][n] + 1 # c(s[i+1], _)
 
-    for j in range(n-1, 0, -1):
+for i in range(m-1, -1, -1):
+    for j in range(n-1, -1, -1):
         x = 1 + a[i][j+1] # c(_, t[j+1])
-        y = (s[i+1] != t[j+1]) + a[i+1][j+1]
+        y = (s[i] != t[j]) + a[i+1][j+1]
         z = 1 + a[i+1][j] # c(s[i+1], _)
 
         a[i][j] = min(x, y, z)
 
+for i in range(m+1):
     print(a[i])
+
