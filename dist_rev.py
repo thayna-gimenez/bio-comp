@@ -19,6 +19,7 @@ for j in range(n-1, -1, -1): a[m][j] = a[m][j+1] + 1 # c(_, t[j+1])
 for i in range(m-1, -1, -1): 
     a[i][n] = a[i+1][n] + 1 # c(s[i+1], _)
 
+
 for i in range(m-1, -1, -1):
     for j in range(n-1, -1, -1):
         x = 1 + a[i][j+1] # c(_, t[j+1])
