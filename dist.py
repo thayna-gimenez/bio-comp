@@ -7,6 +7,8 @@ m = len(s)
 n = len(t)
 
 # criando matriz de alinhamento
+# no final, irá ser preenchida com as pontuações de alinhamentos ótimos de
+# prefixos de s com prefixos de t
 a = []
 
 for i in range(m+1):
@@ -29,14 +31,3 @@ for i in range(1, m+1):
         a[i][j] = min(x, y, z)
 
     print(a[i])
-
-
-""" for i in range(1, m+1):
-    for j in range(1, n+1):
-        a[i][j] = a[i-1][j] + 1 # c(s[i], _)
-
-        if (a[i][j] > a[i-1][j-1] + (s[i-1]) != t[j-1]): # c(s[i], t[j])
-            a[i][j] = a[i-1][j-1] + 1 
-
-        if (a[i][j] > a[i][j-1] + 1): # c(_, t[j])
-            a[i][j] = a[i][j-1] + 1 """
