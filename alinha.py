@@ -24,5 +24,11 @@ def alinha(a, s, t):
         print(s)
         espaco(s)
 
-    if (a[m][n] == a[m-1][n] + 2): # c(s[i], _)
-        return alinha
+    if (a[m][n] == a[m-1][n] + 1): # c(s[i], _)
+        x = alinha(a, s[:m-1], t) 
+        return x + s[m]
+
+    if (a[m][n] == a[m-1][n-1] + (s[m] != t[n])):
+        y = alinha(a, s[:m-1], t[:n-1])
+        return y + s[m]
+    
