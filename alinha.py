@@ -1,3 +1,4 @@
+# primeira tentativa de alinhamento
 # devolve um alinhamento de pontuação mínima de s e t
 
 # imprime espaços de acordo com o tamanho da sequência dada
